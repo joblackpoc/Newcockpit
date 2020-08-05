@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 172.16.30.102-157
+ Source Server         : 61.19.80.157_3306
  Source Server Type    : MySQL
  Source Server Version : 50623
- Source Host           : 172.16.30.102:3306
+ Source Host           : 61.19.80.157:3306
  Source Schema         : cockpit
 
  Target Server Type    : MySQL
  Target Server Version : 50623
  File Encoding         : 65001
 
- Date: 05/08/2020 12:03:29
+ Date: 06/08/2020 00:08:11
 */
 
 SET NAMES utf8mb4;
