@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for kpi in kpis %}
+<option value="{{ kpi.pk }}">{{ kpi.kpi_name }}</option>
+{% endfor %}

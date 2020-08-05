@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<!-- [ breadcrumb ] start -->
+		<div class="page-header">
+			<div class="page-block">
+				<div class="row align-items-center">
+					<div class="col-md-12">
+						<div class="page-header-title">
+							<h5 class="m-b-10">...</h5>
+						</div>
+						<ul class="breadcrumb">
+							<li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">HOME</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- [ breadcrumb ] end -->
+		<!-- [ Main Content ] start -->
+		<div class="row">
+			<!-- [ accordion-collapse ] start -->
+			<div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"> คำอธิบายตัวชี้วัด KPI</h5>
+						<hr>     
+
+                            <div class="accordion" id="accordionExample">
+                                <div class="card mb-0">
+                                    <div class="card-header" id="headingTwo">
+                                        <h4 class="mb-0"><a href=" {% url 'keyin'  %} " class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="">คลิกดูคำอธิบาย :{{object.kpi_name}}</a></h4>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                        <div class="card-body">
+											<h4>รหัส :&nbsp;{{object.kpi_code}}<br/>
+											Group :&nbsp;&nbsp;{{object.kpi_group_name}}<br/>
+											กลุ่มงาน:&nbsp;{{object.response_kpi}}<br/>
+											
+											{{object.kpi_goal}}<br/>
+											{{object.goal_descript}}<br/>
+											หน่วย :&nbsp;{{object.unit}}<br/>
+ 										    {{object.descript_a}}<br/>
+											{{object.descript_b}}<br/></h4>
+											<br/>
+											<a href=" {% url 'keyin' %} "><button type="button" class="btn  btn-primary">บันทึกข้อมูล KPI</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+			</div>
+			<!-- [ accordion-collapse ] end -->
+		</div>
+		<!-- [ Main Content ] end -->
+	</div>
+</div>
+<!-- [ Main Content ] end -->
+ {% endblock content %}
+    
