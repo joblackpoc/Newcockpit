@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     
     'crispy_forms',
+    'chartjs',
     'widget_tweaks',
     'django_filters',
     'dj_chartjs',
