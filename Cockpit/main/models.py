@@ -136,38 +136,6 @@ class KeyInput(models.Model):
         verbose_name = 'บันทึก KPI'
         verbose_name_plural = 'บันทึก KPI'
 
-class Country(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = 'main_country'
-
-class City(models.Model):
-    name = models.CharField(max_length=30)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.name
-    
-    class Meta:
-        db_table = 'main_city'
-
-class Person(models.Model):
-    fname = models.CharField(max_length=100)
-    lname = models.CharField(max_length=100)
-    birth = models.DateField()
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.fname+' - '+self.lname
-    
-    class Meta:
-        db_table = 'main_person'
-
 class Chospcode(models.Model):
     hospcode = models.CharField(max_length=5)
     hosname = models.CharField(max_length=255)
