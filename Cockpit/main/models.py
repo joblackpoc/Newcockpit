@@ -364,7 +364,7 @@ class Cmpo(models.Model):
 class Chospital(models.Model):
     hospcode = models.CharField(max_length=5, primary_key=True)
     hosname = models.CharField(max_length=255, null=True, blank=True)
-    hostype = models.Charfield(max_length=2, null=True, blank=True)
+    hostype = models.CharField(max_length=2, null=True, blank=True)
     address = models.CharField(max_length=50, null=True, blank=True)
     road = models.CharField(max_length=50, null=True, blank=True)
     mu = models.CharField(max_length=2, null=True, blank=True)
@@ -380,8 +380,8 @@ class Chospital(models.Model):
     dep = models.CharField(max_length=5, null=True, blank=True)
     hmain_sent = models.CharField(max_length=5, null=True, blank=True)
     regiter_date = models.DateField(null=True, blank=True)
-    mocode = models.CharField(max_length=5)
-    status = models.DecimalField()
+    mcode = models.CharField(max_length=5)
+    status = models.IntegerField()
 
     def __str__(self):
         return self.hosname

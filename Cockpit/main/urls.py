@@ -4,7 +4,6 @@ from .views import *
 
 urlpatterns = [
     path('', Home, name='home' ),
-    path('profile/', Profile, name='profile'),
     path('register/', Register, name='register'),
     path('keyin/', KeyIn, name='keyin'),
     path('kpilistview/', KpiListView.as_view(), name='kpilistview'),

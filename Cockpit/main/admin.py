@@ -8,4 +8,6 @@ admin.site.register(Kpi)
 admin.site.register(Profile)
 admin.site.register(KeyInput)
 admin.site.register(Cmpo)
+admin.site.register(Chospital)
+admin.site.register(Excellence)
     
