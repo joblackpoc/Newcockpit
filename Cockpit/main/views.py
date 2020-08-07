@@ -52,18 +52,12 @@ def profile(request):
     return render(request, 'main/profile.html', context)
 
 @login_required
-def KeyIn(request):
+class KeyinCreateView(CreateView):
+    model = KeyInput
+    form_class = KeyInputForm
+    template_name = 'main/kpi_input.html'
+    success_url = reverse_lazy('home')
 
-    form = KeyInputForm
-    if request.method == 'POST':
-        form = KeyInputForm(request.POST)
-        if form.is_valid():
-            fm = form.save(commit=False)
-            fm.user = request.user
-            fm.save()
-        return redirect('home')
-    
-    return render(request, 'main/kpi_input.html', {'form':form})
     
 @login_required
 def KeyInput(request):
@@ -75,6 +69,11 @@ def KeyInput(request):
             return redirect('home')
 
     return render(request, 'main/kpi_input.html', {'form':form})
+
+def load_kpi(request):
+    response = request.GET.get('response')
+    kpis = Kpi.objects.filter(response=response).order_by('kpi_name')
+    return render(request, 'main/kpi_dropdown_list_options.html', {'kpis':kpis})
 
 @login_required
 def KpiList(request):
