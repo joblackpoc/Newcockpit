@@ -10,8 +10,8 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import UpdateView, DetailView, CreateView, ListView
-from .forms import KeyInputForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-from .models import *
+from main.forms import KeyInputForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm, InputForm
+from main.models import Ssj, Reponse, Profile, Kpi, KeyInput, Cmpo, Index
 
 # Create your views here.
 
@@ -29,6 +29,7 @@ def Register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'main/register.html', {'form':form})
+
 
 @login_required
 def profile(request):
@@ -52,29 +53,19 @@ def profile(request):
     return render(request, 'main/profile.html', context)
 
 @login_required
-class KeyinCreateView(CreateView):
-    model = KeyInput
-    form_class = KeyInputForm
-    template_name = 'main/kpi_input.html'
-    success_url = reverse_lazy('home')
+def KeyIn(request):
 
-    
-@login_required
-def KeyInput(request):
     form = KeyInputForm
     if request.method == 'POST':
         form = KeyInputForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
-
+            fm = form.save(commit=False)
+            fm.user = request.user
+            fm.save()
+        return redirect('home')
+    
     return render(request, 'main/kpi_input.html', {'form':form})
-
-def load_kpi(request):
-    response = request.GET.get('response')
-    kpis = Kpi.objects.filter(response=response).order_by('kpi_name')
-    return render(request, 'main/kpi_dropdown_list_options.html', {'kpis':kpis})
-
+    
 @login_required
 def KpiList(request):
     kpi = Kpi.objects.all()
@@ -87,9 +78,15 @@ class KpiListView(ListView):
     context_object_name = 'kpi'
     paginate_by = 7
 
+
 class KpiDetailView(DetailView):
     model = Kpi
     template_name = 'main/kpi_detail.html'
+
+def PersonList(request):
+    people = Person.objects.all()
+    context = {'people':people}
+    return render(request, 'main/person_list.html', context)
 
 def population_chart(request):
     labels = []
@@ -105,7 +102,19 @@ def population_chart(request):
         'data': data,
     })
 
-
-
 def ChartJS(request):
     return render(request, 'main/chartjs.html')
+
+def Input(request):
+    form = InputForm
+    if request.method =='POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    return render(request, 'main/input_form.html', {'form':form})
+
+def load_index(request):
+    group_id = request.GET.get('group')
+    indexes = Index.objects.filter(group_id=group_id).order_by('name')
+    return render(request, 'main/index_dropdown_list_options.html',{'indexes':indexes})

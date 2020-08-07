@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from main.models import *
+from main.models import KeyInput, Kpi, Profile, Input, Index, Group
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -61,23 +61,27 @@ class KeyInputForm(forms.ModelForm):
                 , 'a11':"A - สิงหาคม 2563", 'b11':"B - สิงหาคม 2563"
                 , 'a12':"A - กันยายน 2563", 'b12':"B - กันยายน 2563"
          }
- 
+
+class InputForm(forms.ModelForm):
+    class Meta:
+        model = Input
+        fields = ('group','index','a1','b1')
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['kpi'].queryset = Kpi.objects.none()
+        self.fields['index'].queryset=Index.objects.none()
 
-        if 'response' in self.data:
+        if 'group' in self.data:
             try:
-                response_id = int(self.data.get('response'))
-                self.fields['kpi'].queryset = Kpi.objects.filter(response_id=response_id).order_by('kpi')
-            except (ValueError,TypeError):
-                pass
-        elif self.instance.pk:
-            self.fields['kpi'].queryset = self.instance.response.kpi_set.order_by('kpi')
+                group_id = int(self.data.get('group'))
+                self.fields['index'].queryset=Index.objects.filter(group_id=group_id).order_by('name')
+            except(ValueError,TypeError):
+                pass            
 
+        elif self.instance.pk:
+            self.fields['index'].queryset=self.instance.group.index_set.order_by('name')
 
     
+       
 
-            
-         
-
+    

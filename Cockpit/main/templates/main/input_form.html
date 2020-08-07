@@ -1,0 +1,88 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10"> ฟอร์ม บันทึก KPI</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'home' %}">HOME</a></li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Cockpit R11 2563</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" id="inputForm" data-index-url="{% url 'ajax-load-index' %}" novalidate>
+                            {% csrf_token %}
+                            <table>
+                            <!-- {{ form.as_table }} -->
+                            </table>
+                            <fieldset class="form-group">
+                                <legend class="border-bottom mb-4">บันทึกผลงานตามตัวชี้วัด</legend>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{form.group|as_crispy_field}}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{form.index|as_crispy_field}}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{form.a1|as_crispy_field}}
+                                    </div>
+                                    <div class="col-md-12">
+                                        {{form.b1|as_crispy_field}}
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group">
+                                <button class="btn btn-info" type="submit">Save</button>
+                                <a href="{% url 'home' %}">Home</a>
+                            </div>
+                                 
+                        </form>
+ 
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- [ Main Content ] end -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+        $("#id_group").change(function () {
+            var url = $("#inputForm").attr("data-index-url");
+            var groupId = $(this).val();
+
+            $.ajax({
+            url: url,
+            data: {
+                'group': groupId
+            },
+            success: function (data) {
+                $("#id_index").html(data);
+            }
+            });
+
+        });
+        </script>
+{% endblock content %}
+
+

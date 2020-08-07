@@ -15,7 +15,6 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
 	<meta name="author" content="Cockpit11" />
-	
 	<!--icon fonts-->
 	<link rel="icon" href="{% static 'assets/css/iconfont.css' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'assets/css/iconfont.min.css' %}" type="image/x-icon">
@@ -62,16 +61,16 @@
 					    <a href="{% url 'home' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">HOME</span></a>
 					</li>
 					<li class="nav-item">
+					    <a href="{% url 'input' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-user m-r-5"></i></span><span class="pcoded-mtext">Input</span></a>
+					</li>
+					<li class="nav-item">
 					    <a href="{% url 'kpilistview' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">คำอธิบายตัวชี้วัด KPI</span></a>
 					</li>
 					<li class="nav-item">
 					    <a href="http://61.19.80.142/qof/web/site/index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-pie-chart"></i></span><span class="pcoded-mtext">QOF & PPA</span></a>
 					</li>
 					<li class="nav-item">
-					    <a href="http://www.hpc11.go.th/hdc-hpc11/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Happen Scoring</span></a>
-					</li>
-					<li class="nav-item">
-					    <a href="http://hpc11.go.th/happen-scoring-board_p2/frontend/web/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Happen Score Board</span></a>
+					    <a href="http://hpc11.go.th/happen-scoring-board_p2/frontend/web/" class="nav-link "><span class="pcoded-micon"><i class="feather icon-map"></i></span><span class="pcoded-mtext">Happen Scoring</span></a>
 					</li>
 <!--Login show menu start-->
 					{% if user.is_authenticated %}
@@ -86,7 +85,7 @@
 					    <a href="{% url 'kpilist' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Kpi List</span></a>
 					</li>
 					<li class="nav-item">
-					    <a href="{% url 'chartjs' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Chart JS</span></a>
+					    <a href="{% url 'chart-js' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Chart JS</span></a>
 					</li>
 					<li>
 					    <a href="{% url 'logout' %}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-log-out m-r-5"></i></span><span class="pcoded-mtext"> Logout</span></a>
@@ -139,8 +138,6 @@
 			
 	</header>
 	<!-- [ Header ] end -->
-	
-	
 
 <!-- [ Main Content ] start -->
 
@@ -149,16 +146,13 @@
 {% endblock content %}
     
 <!-- [ Main Content ] end -->
-	<script src="https://code.jquery.com/jquey-3.3.1.min.js"></script>
     <!-- Required Js -->
     <script src="{% static 'assets/js/vendor-all.min.js' %}"></script>
     <script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/ripple.js' %}"></script>
     <script src="{% static 'assets/js/pcoded.min.js' %}"></script>
-
 	<!-- Apex Chart -->
 	<script src="{% static 'assets/js/plugins/apexcharts.min.js' %}"></script>
-
 	<!-- custom-chart js -->
 	<script src="{% static 'assets/js/pages/dashboard-main.js' %}"></script>
 </body>

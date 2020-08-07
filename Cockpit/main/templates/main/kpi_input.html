@@ -1,9 +1,6 @@
 {% extends 'main/base.html' %}
 {% load crispy_forms_tags %}
-{% load widget_tweaks %}
-{% load static %}
 {% block content %}
-
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
     <div class="pcoded-content">
@@ -32,16 +29,15 @@
                         <h5>Cockpit R11 2563</h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" id="keyinputform" class="KeyInput" data-kpi-url=" {% url 'ajax_load_kpi' %} " novalidate>
+                        <form method="POST" class="KeyInput">
                             <!-- Poc insert -->
                             {% csrf_token %}
-                            <table>
-                                 {{ form.as_table }}
-                            </table>
                             <fieldset class="form-group">
                                 <legend class="border-bottom mb-4">บันทึกผลงานตามตัวชี้วัด</legend>
                                 <div class="row">
-                                    
+                                    <div class="col-md-12">
+                                        {{form.kpi|as_crispy_field}}
+                                    </div>
                                     <div class="col-md-6">
                                         {{form.hospcode|as_crispy_field}}
                                     </div>
@@ -53,9 +49,6 @@
                                     </div>
                                     <div class="col-md-6">
                                         {{form.response|as_crispy_field}}
-                                    </div>
-                                    <div class="col-md-12">
-                                        {{form.kpi|as_crispy_field}}
                                     </div>
                                     <div class="col-md-6">
                                         {{form.a1|as_crispy_field}}
@@ -138,29 +131,10 @@
                             <!-- Poc insert -->
 
                         </form>
-                        
-                        <script>
-                            $("#response").change(function(){
-                                var url = $("#keyinputform").attr("data-kpi-url");
-                                var response = $(this).val();
-
-                                $.ajax({
-                                    url: url,
-                                    data: {
-                                        'response': response
-                                    },
-                                    success: function (data){
-                                        $("#kpi").html(data);
-                                    }
-                                });
-                            });
-                        </script>
-
                     </div>
                 </div>
             </div>
          </div>
         <!-- [ Main Content ] end -->
-        
 {% endblock content %}
     
