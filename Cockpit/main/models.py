@@ -19,7 +19,7 @@ class Ssj(models.Model):
         verbose_name = 'จังหวัด'
         verbose_name_plural = 'จังหวัด'
  
-class Reponse_kpi(models.Model):
+class Reponse(models.Model):
     name = models.CharField(max_length=155, blank=True )
     def __str__(self):
         return self.name
@@ -71,7 +71,7 @@ class Kpi(models.Model):
     kpi_name = models.TextField(blank=True)
     kpi_group = models.CharField(max_length=15, blank=True)
     kpi_group_name = models.CharField(max_length=55, blank=True)
-    response_kpi = models.ForeignKey(Reponse_kpi, on_delete=models.CASCADE)
+    response = models.ForeignKey(Reponse, on_delete=models.CASCADE)
     goal = models.CharField(max_length=11, blank=True)
     goal_descript = models.TextField(blank=True)
     cri_type = models.CharField(max_length=15, blank=True)
@@ -91,10 +91,10 @@ class Kpi(models.Model):
 
 class KeyInput(models.Model):
     year_list = (('2020', '2563'),)
-    kpi = models.ForeignKey(Kpi, on_delete=models.DO_NOTHING)
-    hospcode = models.ForeignKey(Ssj, default='00068', on_delete=models.CASCADE)
-    response = models.ForeignKey(Reponse_kpi, default='1', on_delete=models.CASCADE)
     year = models.CharField(max_length=6, choices=year_list, default='2020')
+    hospcode = models.ForeignKey(Ssj, default='00068', on_delete=models.CASCADE)
+    response = models.ForeignKey(Reponse, default='1', on_delete=models.CASCADE)
+    kpi = models.ForeignKey(Kpi, on_delete=models.DO_NOTHING)    
     a1 = models.CharField(max_length=55, blank=True)
     b1 = models.CharField(max_length=55, blank=True)
     a2 = models.CharField(max_length=55, blank=True)
@@ -129,7 +129,7 @@ class KeyInput(models.Model):
         return super(KeyInput, self).save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.kpi)+' - '+ str(self.response) +' - '+str(self.hospcode) +' - '+str(self.user)
+        return str(self.kpi)+' - '+str(self.hospcode) +' - '+str(self.user.first_name)+' - '+str(self.user.last_name)
 
     class Meta:
         ordering = ('kpi',)

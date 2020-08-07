@@ -3,7 +3,7 @@ from main.models import *
 
 # Register your models here.
 admin.site.register(Ssj)
-admin.site.register(Reponse_kpi)
+admin.site.register(Reponse)
 admin.site.register(Kpi)
 admin.site.register(Profile)
 admin.site.register(KeyInput)

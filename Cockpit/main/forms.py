@@ -61,4 +61,20 @@ class KeyInputForm(forms.ModelForm):
                 , 'a11':"A - สิงหาคม 2563", 'b11':"B - สิงหาคม 2563"
                 , 'a12':"A - กันยายน 2563", 'b12':"B - กันยายน 2563"
          }
+ 
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['kpi'].queryset = Kpi.objects.none()
+ 
+        if 'response' in self.data:
+            try:
+                country_id = int(self.data.get('response'))
+                self.fields['kpi'].queryset = City.objects.filter(country_id=country_id).order_by('kpi_code')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['kpi'].queryset = self.instance.country.city_set.order_by('kpi_code')
+            
+            
+         
 

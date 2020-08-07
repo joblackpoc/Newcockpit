@@ -10,8 +10,8 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import UpdateView, DetailView, CreateView, ListView
-from main.forms import KeyInputForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-from main.models import *
+from .forms import KeyInputForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import *
 
 # Create your views here.
 
@@ -105,6 +105,8 @@ def population_chart(request):
         'labels': labels,
         'data': data,
     })
+
+
 
 def ChartJS(request):
     return render(request, 'main/chartjs.html')
