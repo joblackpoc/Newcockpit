@@ -34,9 +34,9 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('user_phone','ssj','response','image')
+        fields = ('user_phone','ssj','group','image')
         labels = {
-            'user_phone':"เบอร์โทรศัพท์", 'ssj':"เลือกจังหวัด", 'response':"เลือกกลุ่มงาน", 'image':"เลือกรูปภาพของคุณ"
+            'user_phone':"เบอร์โทรศัพท์", 'ssj':"เลือกจังหวัด", 'group':"เลือกกลุ่มงาน", 'image':"เลือกรูปภาพของคุณ"
         }
 
 class KeyInputForm(forms.ModelForm):
