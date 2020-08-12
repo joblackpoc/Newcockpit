@@ -12,6 +12,8 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import UpdateView, DetailView, CreateView, ListView
 from main.forms import KeyInputForm, UserRegisterForm, UserUpdateForm, ProfileUpdateForm, InputForm
 from main.models import *
+from rest_framework import viewsets, permissions
+from .serializers import IndexSerializer
 # Create your views here.
 
 def Home(request):
@@ -126,3 +128,7 @@ def PersonList(request):
     people = Person.objects.all()
     context = {'people':people}
     return render(request, 'main/person_list.html', context)
+
+class IndexViewSet(viewsets.ModelViewSet):
+    queryset = Index.objects.all()
+    serializer_class = IndexSerializer
