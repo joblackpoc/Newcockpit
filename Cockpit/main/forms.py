@@ -7,36 +7,63 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','email','password1','password2')
+        fields = ('username'
+            ,'first_name'
+            ,'last_name'
+            ,'email'
+            ,'password1'
+            ,'password2')
         labels = {
-            'username':"Username",'first_name':"ชื่อจริง", 'last_name':"นามสกุล"
-            , 'email':"Email ที่ใช้จริงในปัจจุบัน",'password1':"Password 8 ตัวอักษรขึ้นไปและห้ามใช้ตัวเลขอย่างเดียว",'password2':"ยืนยัน Password อีกครั้ง"
+            'username':"Username"
+            ,'first_name':"ชื่อจริง"
+            , 'last_name':"นามสกุล"
+            , 'email':"Email ที่ใช้จริงในปัจจุบัน"
+            ,'password1':"Password 8 ตัวอักษรขึ้นไปและห้ามใช้ตัวเลขอย่างเดียว"
+            ,'password2':"ยืนยัน Password อีกครั้ง"
         }
 
 class UserEditForm(UserChangeForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username'
+            , 'first_name'
+            , 'last_name'
+            , 'email')
         labels = {
-            'username':"Username", 'first_name':"ชื่อจริง", 'last_name':"นามสกุล", 'email':"Email ที่ใช้จริงในปัจจุบัน"
+            'username':"Username"
+            , 'first_name':"ชื่อจริง"
+            , 'last_name':"นามสกุล"
+            , 'email':"Email ที่ใช้จริงในปัจจุบัน"
         }
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
+        fields = ('username'
+            , 'first_name'
+            , 'last_name'
+            , 'email')
         labels = {
-            'username':"Username", 'first_name':"ชื่อจริง", 'last_name':"นามสกุล", 'email':"Email ที่ใช้จริงในปัจจุบัน"
+            'username':"Username"
+            , 'first_name':"ชื่อจริง"
+            , 'last_name':"นามสกุล"
+            , 'email':"Email ที่ใช้จริงในปัจจุบัน"
         }
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('user_phone','ssj','group','image')
+        fields = ('user_phone'
+            ,'ssj'
+            ,'group'
+            ,'image')
         labels = {
-            'user_phone':"เบอร์โทรศัพท์", 'ssj':"เลือกจังหวัด", 'group':"เลือกกลุ่มงาน", 'image':"เลือกรูปภาพของคุณ"
+            'user_phone':"เบอร์โทรศัพท์"
+            , 'ssj':"เลือกจังหวัด"
+            , 'group':"เลือกกลุ่มงาน"
+            , 'image':"เลือกรูปภาพของคุณ"
         }
 
 class KeyInputForm(forms.ModelForm):
