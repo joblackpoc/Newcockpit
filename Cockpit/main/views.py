@@ -77,18 +77,18 @@ def KeyInput(request):
     
 @login_required
 def KpiList(request):
-    kpi = Kpi.objects.all()
-    context = {'kpi':kpi}
-    return render(request, 'main/key_list.html',context)
+    index = Index.objects.all()
+    context = {'index':index}
+    return render(request, 'main/kpi_list_all.html',context)
 
 class KpiListView(ListView):
-    model = Kpi
+    model = Index
     template_name = 'main/key_list.html'
-    context_object_name = 'kpi'
-    paginate_by = 7
+    context_object_name = 'index'
+    paginate_by = 5
 
 class KpiDetailView(DetailView):
-    model = Kpi
+    model = Index
     template_name = 'main/kpi_detail.html'
 
 def population_chart(request):

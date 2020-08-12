@@ -32,21 +32,22 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="card mb-0">
                                     <div class="card-header" id="headingTwo">
-                                        <h4 class="mb-0"><a href=" {% url 'keyin'  %} " class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="">คลิกดูคำอธิบาย :{{object.kpi_name}}</a></h4>
+                                        <h4 class="mb-0"><a href=" {% url 'input'  %} " class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="">คลิกดูคำอธิบาย :{{object.name}}</a></h4>
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div class="card-body">
 											<h4>รหัส :&nbsp;{{object.kpi_code}}<br/>
-											Group :&nbsp;&nbsp;{{object.kpi_group_name}}<br/>
-											กลุ่มงาน:&nbsp;{{object.response_kpi}}<br/>
+											Group :&nbsp;&nbsp;{{object.excellence}}<br/>
+											กลุ่มงาน:&nbsp;{{object.group}}<br/>
 											
 											{{object.kpi_goal}}<br/>
 											{{object.goal_descript}}<br/>
 											หน่วย :&nbsp;{{object.unit}}<br/>
+
  										    {{object.descript_a}}<br/>
 											{{object.descript_b}}<br/></h4>
 											<br/>
-											<a href=" {% url 'keyin' %} "><button type="button" class="btn  btn-primary">บันทึกข้อมูล KPI</button></a>
+											<a href=" {% url 'input' %} "><button type="button" class="btn  btn-primary">บันทึกข้อมูล KPI</button></a>
                                         </div>
                                     </div>
                                 </div>

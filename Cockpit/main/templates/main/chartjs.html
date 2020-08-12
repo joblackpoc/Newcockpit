@@ -29,7 +29,7 @@
                 <h5 class="mb-0"> Chart JS</h5>
                 <hr>  
                   <!--Start CharJS-->
-                  <div id="container" style="width: 90%;">
+                  <div id="container" style="height:100%;">
                     <canvas id="population-chart" data-url="{% url 'population-chart' %}"></canvas>
                   </div>
                   <!--Stop ChartJS-->
@@ -60,7 +60,9 @@
             labels: data.labels,
             datasets: [{
               label: 'Population',
-              backgroundColor: '#6fae3f',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor:'rgba(75, 192, 192, 1)',
+              borderWidth:1,
               data: data.data
             }]          
           },
@@ -72,6 +74,13 @@
             title: {
               display: true,
               text: 'Population Bar Chart'
+            },
+            scales:{
+              yAxes:[{
+                ticks:{
+                  beginAtZero: true
+                }
+              }]
             }
           }
         });
