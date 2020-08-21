@@ -110,6 +110,7 @@ def population_chart(request):
 def ChartJS(request):
     return render(request, 'main/chartjs.html')
 
+@login_required
 def Input(request):
     form = InputForm
     if request.method =='POST':
