@@ -68,11 +68,15 @@ def KeyIn(request):
 
 @login_required
 def KeyInput(request):
+    
     form = KeyInputForm
     if request.method == 'POST':
         form = KeyInputForm(request.POST)
         if form.is_valid():
-            form.save()
+            fm = form.save(commit=False)
+            fm.user = request.user
+            fm.save()
+            
             return redirect('home')
 
     return render(request, 'main/kpi_input.html', {'form':form})
@@ -116,7 +120,9 @@ def Input(request):
     if request.method =='POST':
         form = InputForm(request.POST)
         if form.is_valid():
-            form.save()
+            fm = form.save(commit=False)
+            fm.user = request.user
+            fm.save()
             return redirect('home')
     return render(request, 'main/input_form.html', {'form':form})
 
