@@ -11,6 +11,7 @@ django-ckeditor==5.9.0
 django-chartjs==2.2.1
 dj-chartjs==1.0.6
 django-cleanup==5.0.0
+django-cors-headers==3.4.0
 django-crispy-forms==1.9.2
 django-filter==2.3.0
 django-js-asset==1.2.2
