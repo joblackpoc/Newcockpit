@@ -33,8 +33,10 @@
 							<div class="col-md-12 col-xl-12">
 								<div class="card">
 									<div class="card-body">
-										<a href=" {% url 'detail' key.pk %} " class="card-link">{{key.name}}</a><br/>
-										<a href=" {% url 'detail' key.pk %} " >กลุ่มงาน:&nbsp;{{key.group}}</a>
+										<a href=" {% url 'detail' key.pk %} " class="card-link">KPI Code =&nbsp;{{key.kpi_code}}</a><br/>
+										<a href=" {% url 'detail' key.pk %} " >กลุ่มงาน:&nbsp;{{key.group}}</a><br/>
+										<a href=" {% url 'detail' key.pk %} " class="card-link">{{key.name}}</a>
+										
 									</div>
 								</div>
 							</div>				

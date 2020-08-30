@@ -131,6 +131,8 @@ def load_index(request):
     indexes = Index.objects.filter(group_id=group_id).order_by('name')
     return render(request, 'main/index_dropdown_list_options.html',{'indexes':indexes})
 
+
+
 def PersonList(request):
     people = Person.objects.all()
     context = {'people':people}

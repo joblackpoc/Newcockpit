@@ -130,7 +130,6 @@ class Input(models.Model):
 
     year = models.ForeignKey(Year, on_delete=models.CASCADE,null=True,blank=True)
     ssj = models.ForeignKey(Ssj, on_delete=models.CASCADE,null=True,blank=True)
-    excellence = models.ForeignKey(Excellence, on_delete=models.CASCADE,null=True,blank=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE,null=True,blank=True)
     index = models.ForeignKey(Index, on_delete=models.CASCADE,null=True,blank=True)
     a1 = models.IntegerField(null=True,blank=True)
@@ -164,7 +163,7 @@ class Input(models.Model):
         if not self.id:
             self.created = timezone.now()
         self.modified = timezone.now()
-        return super(KeyInput, self).save(*args, **kwargs)
+        return super(Input, self).save(*args, **kwargs)
     def __str__(self):
         return self.user.first_name
 
