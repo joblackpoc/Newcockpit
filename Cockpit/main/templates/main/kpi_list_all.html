@@ -34,7 +34,7 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="card mb-0">
                                     <div class="card-header" id="headingTwo">
-                                        <h5 class="mb-0"><a href=" {% url 'detail' key.pk %} " class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="">{{key.name}}</a></h5>
+                                        <h5 class="mb-0"><a href=" {% url 'detail' key.pk %} " class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls=""> {{key.kpi_code}}&nbsp;=>&nbsp; {{key.name}}</a></h5>
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div class="card-body">
