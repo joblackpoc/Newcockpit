@@ -1,5 +1,13 @@
 # Cockpit is Project about KPI Report 2020
 ## Python Django 3.0.9
+
+sudo apt-get install python3.8-dev 
+sudo apt-get install mysql-client
+sudo apt-get install libsqlclient-dev
+sudo apt-get install libssl-dev
+sudo apt-get install libmysqlclient-dev
+sudo pip3 install mysqlclient
+
 asgiref==3.2.10
 boto3==1.14.38
 beautifulsoup4==4.9.1
