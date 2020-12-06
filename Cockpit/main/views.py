@@ -19,6 +19,9 @@ from .serializers import IndexSerializer
 def Home(request):
     return render(request, 'main/home.html')
 
+def is_valid_queryparam(param):
+    return param !='' and param is not None
+
 def Register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -84,6 +87,7 @@ def KeyInput(request):
 @login_required
 def KpiList(request):
     index = Index.objects.all()
+    kpi_code_contains
     context = {'index':index}
     return render(request, 'main/kpi_list_all.html',context)
 
