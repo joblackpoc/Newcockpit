@@ -22,6 +22,9 @@ sudo apt-get install libssl-dev
 sudo apt-get install libmysqlclient-dev
 sudo pip3 install mysqlclient
 
+sudo apt-get update
+sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
+
 
 asgiref==3.2.10
 boto3==1.14.38
