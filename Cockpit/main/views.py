@@ -87,7 +87,7 @@ def KeyInput(request):
 @login_required
 def KpiList(request):
     index = Index.objects.all()
-    kpi_code_contains
+    #kpi_code_contains
     context = {'index':index}
     return render(request, 'main/kpi_list_all.html',context)
 
